@@ -35,10 +35,15 @@ class MyApp:
        	    self.right = Button(self.myContainer1)
        	    self.right.configure(text="right", background= "blue")
        	    self.right.grid(row=0,column=2)
+       	    
+       	    self.down = Button(self.myContainer1)
+       	    self.down.configure(text="down", background= "red")
+       	    self.down.grid(row=0,column=3)
        	    # Bind an event to the first button
        	    self.up.bind("<Button-1>", self.upClicked)
        	    self.left.bind("<Button-1>", self.leftClicked)
        	    self.right.bind("<Button-1>", self.rightClicked)
+       	    self.down.bind("<Button-1>", self.downClicked)
        	    
        	    # No need to edit this - just includes the drawpad into our frame
        	    drawpad.pack(side=RIGHT)
@@ -65,7 +70,11 @@ class MyApp:
 	   global oval
 	   global player
 	   drawpad.move(player,20,0)
-		
+	def downClicked(self, event):   
+	   global oval
+	   global player
+	   drawpad.move(player,0,20)
+			
 
 app = MyApp(root)
 root.mainloop()
